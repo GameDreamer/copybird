@@ -1,8 +1,3 @@
-var GameSettings = {
-	scale:0.75,
-	screen_width:360,
-	screen_heigth:600
-};
 function StartState(){
 	var parallax,viewport,player;
 	/* Called once. Put your one-time initializing here. */
