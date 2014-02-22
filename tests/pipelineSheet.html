@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>copy bird</title>
+		<style>
+			html,body{
+				background-color:black;
+			}
+			.container{
+				margin: auto;
+				width: 360px;
+			}
+			#ff{
+				position: fixed;
+				left: 0px;
+				top: 0px;
+				width: 203px;
+				height: 155px;
+				color: #fff;
+				display: block;
+				z-index: 9999;
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<canvas width="360" height="600" id="canvas"></canvas>
+			<!-- <canvas width="480" height="800" id="canvas"></canvas> -->
+		</div>
+		<div id="ff"></div>
+		<script src="../libs/jaws.js"></script>
+		<script src="../game/GameSettings.js"></script>
+		<script src="../game/Pipeline.js"></script>
+		<script src="../game/PipelineSheet.js"></script>
+		<script type="text/javascript">
+			function StartState(){
+				var pipelineSheet;
+				var score = 0;
+				/* Called once. Put your one-time initializing here. */
+				this.setup = function() {
+					pipelineSheet = new PipelineSheet({
+						pipelineXSpacing:350, //管道固定横向间距 350
+ 					    startX:500, //管道开始横坐标 500
+					    scoreline:100, //管道分数线横坐标 100
+					    callback: function(){
+					    	document.getElementById("ff").innerHTML += score+++"<br/>";
+					    } //当管道划过分数线横坐标时调用回调函数 callback()
+					});
+				};
+			  
+				/* Called each gametick. Put your gamelogic here. */
+				this.update = function() {
+					pipelineSheet.update();
+				};
+
+				/* Called each gametick after update(). Put your drawing here. */
+				this.draw = function() {
+					//jaws.context.clearRect(0,0,jaws.width,jaws.height)
+					jaws.fill("white");
+					pipelineSheet.draw();
+					console.log("FPS",jaws.game_loop.fps);
+				};
+			}
+			function loadAssets(){
+				jaws.assets.root = "../assets/"
+				jaws.assets.add("guangdao.png");
+			}
+			loadAssets();
+			jaws.start(StartState, {fps:30});
+		</script>
+	</body>
+</html>
+
+
+
+
