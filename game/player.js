@@ -1,7 +1,7 @@
 function Player(x,y,scale){
 	var sprite_sheet = new jaws.SpriteSheet({image: "player.png", frame_size: [50,50] })
 	,anim = new jaws.Animation({sprite_sheet: "player.png",frame_size: [50,50], frame_duration: 1000,loop:true})
-	,jump_speed = -10
+	,jump_speed = -9
 	,speed = jump_speed
 	,player = new jaws.Sprite({image: sprite_sheet.frames[0], x: x, y: y, scale: scale, anchor: "center"});
 	player.die = false;
