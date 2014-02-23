@@ -22,6 +22,11 @@ function StartState(){
 		jaws.context.fillStyle = "Red" ;
 		jaws.context.strokeStyle =  "rgba(200,200,200,0.0)";
 		jaws.context.fillText("CLICK", GameSettings.screen_width/2, GameSettings.screen_heigth/3);
+		jaws.context.font = "bold 20pt terminal";
+		jaws.context.lineWidth = 5;
+		jaws.context.fillStyle = "black" ;
+		jaws.context.strokeStyle =  "rgba(200,200,200,0.0)";
+		jaws.context.fillText("最高分:"+GameSettings.bestScore, GameSettings.screen_width/3, GameSettings.screen_heigth*2/5);
 		player.draw();
 		bg.drawFront();
 		jaws.context.font = "bold 10pt terminal";

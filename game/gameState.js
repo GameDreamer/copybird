@@ -38,16 +38,22 @@ function GameState(){
 		jaws.collideOneWithMany(player, pipelineSheet,function(player,obj){
 			console.log(obj);
 			player.die();
+			saveScore();
 		});
 		if(player.y<0){
 			player.stop();
 			player.setY(0);
 		}else if(player.y>GameSettings.floor){
 			player.die();
+			saveScore();
 		}
 		
 	};
-
+	function saveScore(){
+		if(GameSettings.bestScore<score){
+			GameSettings.bestScore = score;
+		}
+	}
 	/* Called each gametick after update(). Put your drawing here. */
 	this.draw = function() {
 		bg.drawBack();
