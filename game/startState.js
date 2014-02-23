@@ -5,6 +5,7 @@ function StartState(){
 		bg = BackGround();
 		player = Player(GameSettings.screen_width/5,GameSettings.screen_heigth/4,2);
 		jaws.on_keydown(["space","left_mouse_button","center_mouse_button", "right_mouse_button"], function(){jaws.switchGameState(GameState,{fps:GameSettings.fps})});
+		loopBGM("bgm2.*");
 	};
   
 	/* Called each gametick. Put your gamelogic here. */

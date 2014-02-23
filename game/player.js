@@ -1,15 +1,20 @@
 function Player(x,y,scale){
 	var sprite_sheet = new jaws.SpriteSheet({image: "player.png", frame_size: [50,50] })
 	,anim = new jaws.Animation({sprite_sheet: "player.png",frame_size: [50,50], frame_duration: 1000,loop:true})
-	,jump_speed = -9
+	,jump_speed = -8
 	,speed = jump_speed
-	,player = new jaws.Sprite({image: sprite_sheet.frames[0], x: x, y: y, scale: scale, anchor: "center"});
-	player.die = false;
+	,player = new jaws.Sprite({image: sprite_sheet.frames[0], x: x, y: y, scale: scale, anchor: "center"})
+	,die = false
+	,isHappy = false;
+	var jump_sound,die_sound;
 	/**
 	跳跃
 	*/
 	player.jump = function(){
-		speed = jump_speed;
+		if(!die){
+			speed = jump_speed;
+			//playSound("jump.*");
+		}
 	};
 	/**
 	播放暴走脸
@@ -21,11 +26,15 @@ function Player(x,y,scale){
 	更新
 	*/
 	player.update = function(){
-		if(player.die){
+		//如果死亡，直接return
+		if(die){
 			player.face_6();
 			return;
 		}
-		if(speed>=0 && speed<(-jump_speed)){
+		//判断表情
+		if(isHappy){
+			player.face_2();
+		}else if(speed>=0 && speed<(-jump_speed)){
 			player.face_3();
 		}else if(speed>=(-jump_speed)){
 			player.face_5();
@@ -34,17 +43,22 @@ function Player(x,y,scale){
 		}
 		speed+=GameSettings.gravity;
 		player.move(0, speed);
-		if(player.y<0){
-			player.setY(0);
-			speed = 0;
-			return;
-		}else if(player.y>GameSettings.floor){
-			player.setY(GameSettings.floor);
-			player.die = true;
-			speed = 0;
-			return;
-		}
-		
+	};
+	player.stop = function(){
+		speed = 0;
+	};
+	player.die = function(){
+		die = true;
+		player.face_6();
+		playSound("die.*");
+	};
+	player.isDied = function(){
+		return die;
+	};
+	player.happy = function(ms){
+		isHappy = true;
+		playSound("score.*");
+		setTimeout(function(){isHappy=false;},ms|500);
 	};
 	/**
 	player 图片 切换

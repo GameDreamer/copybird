@@ -26,7 +26,7 @@ var PipelineSheet = function(options){
 	//管道最小高度
 	var minHeight = -250;
 	//管道上下间距
-	var pipelineYSpacing = 130;
+	var pipelineYSpacing = 150;
 	//管道固定横向间距
 	var pipelineXSpacing = options.pipelineXSpacing;
 	//分数线
