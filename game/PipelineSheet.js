@@ -6,6 +6,7 @@
  * options.pipelineXSpacing //管道固定横向间距 350 required
  * options.startX //管道开始横坐标 500 required
  * options.scoreline //管道分数线横坐标 100 required
+ * options.speed //管道移动速度 5
  * options.callback //当管道划过分数线横坐标时调用回调函数 callback() 
  */
 var PipelineSheet = function(options){
@@ -19,7 +20,7 @@ var PipelineSheet = function(options){
 	//管道画布宽度
 	var pipelineCanvasHeight = pipelineImageHeight*GameSettings.scale;
 	//管道移动速度
-	var speed = 5;
+	var speed = options.speed;
 	//管道最大高度
 	var maxHeight = -50;
 	//管道最小高度
