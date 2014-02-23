@@ -17,7 +17,7 @@ function StartState(){
 	/* Called each gametick after update(). Put your drawing here. */
 	this.draw = function() {
 		bg.drawBack();
-		jaws.context.font = "bold 50pt terminal";
+		jaws.context.font = "bold 40pt terminal";
 		jaws.context.lineWidth = 10;
 		jaws.context.fillStyle = "Red" ;
 		jaws.context.strokeStyle =  "rgba(200,200,200,0.0)";
