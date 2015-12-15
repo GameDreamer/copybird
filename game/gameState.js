@@ -7,7 +7,7 @@ function GameState(){
 		bg = BackGround();
 		player = Player(player_x,player_y,GameSettings.scale);
 		//添加事件监听
-		jaws.on_keydown(["space","left_mouse_button","center_mouse_button", "right_mouse_button"], player.jump);
+		jaws.on_keydown(["space","touchstart"], player.jump);
 		pipelineSheet = new PipelineSheet({
 			pipelineXSpacing:350, //管道固定横向间距 350
 			startX:500, //管道开始横坐标 500
@@ -20,7 +20,7 @@ function GameState(){
 		});
 		loopBGM("bgm1.*");
 	};
-  
+
 	/* Called each gametick. Put your gamelogic here. */
 	this.update = function() {
 		if(switchState){
@@ -47,7 +47,7 @@ function GameState(){
 			player.die();
 			saveScore();
 		}
-		
+
 	};
 	function saveScore(){
 		if(GameSettings.bestScore<score){

@@ -1,7 +1,8 @@
 function loadAssets(){
 	jaws.assets.root = "assets/"
 	jaws.assets.add("bg1.png", "guangdao.png", "parallax1.png", "parallax2.png","player.png");
-	jaws.assets.add("bgm1.MP3", "bgm2.MP3", "jump.MP3","die.mp3","score.mp3");
+	jaws.assets.add("bgm1.MP3", "bgm2.MP3");
+	jaws.assets.add("jump.MP3","die.mp3","score.mp3");
 }
 var song;
 function loopBGM(song_name) {

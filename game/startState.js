@@ -4,10 +4,12 @@ function StartState(){
 	this.setup = function() {
 		bg = BackGround();
 		player = Player(GameSettings.screen_width/5,GameSettings.screen_heigth/4,2);
-		jaws.on_keydown(["space","left_mouse_button","center_mouse_button", "right_mouse_button"], function(){jaws.switchGameState(GameState,{fps:GameSettings.fps})});
+		jaws.on_keydown(["space","touchstart"], function(){
+			jaws.switchGameState(GameState,{fps:GameSettings.fps})
+		});
 		loopBGM("bgm2.*");
 	};
-  
+
 	/* Called each gametick. Put your gamelogic here. */
 	this.update = function() {
 		bg.update();
@@ -34,6 +36,5 @@ function StartState(){
 		jaws.context.fillStyle = "black" ;
 		jaws.context.strokeStyle =  "rgba(200,200,200,0.0)";
 		jaws.context.fillText("fps:"+jaws.game_loop.fps, 0, 10);
-		//console.log("FPS",jaws.game_loop.fps);
 	};
 }
